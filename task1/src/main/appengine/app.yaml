@@ -15,7 +15,7 @@
 runtime: java
 env: flex
 
-handlers:
-- url: /.*
-  script: this field is required, but ignored
+runtime_config:
+  operating_system: "ubuntu22"
+  runtime_version: "17"
 # [END gae_flex_quickstart_yaml]
