@@ -3,24 +3,6 @@ inbound_services:
 - warmup
 auto_id_policy: default
 handlers:
-- url: (/.*/)
-  static_files: __static__\1index.html
-  upload: __NOT_USED__
-  require_matching_file: True
-  login: optional
-  secure: optional
-- url: (/)
-  static_files: __static__\1index.html
-  upload: __NOT_USED__
-  require_matching_file: True
-  login: optional
-  secure: optional
-- url: (/.*)
-  static_files: __static__\1
-  upload: __NOT_USED__
-  require_matching_file: True
-  login: optional
-  secure: optional
 - url: /
   script: unused
   login: optional
@@ -33,11 +15,19 @@ handlers:
   script: unused
   login: optional
   secure: optional
+- url: .*\.jsp
+  script: unused
+  login: optional
+  secure: optional
 - url: /register
   script: unused
   login: optional
   secure: optional
 - url: /index
+  script: unused
+  login: optional
+  secure: optional
+- url: /password
   script: unused
   login: optional
   secure: optional

@@ -50,6 +50,23 @@ public class Model {
        return valid;
     }
 
+    // test! reusable method for identifying if data is present in db where field is db field
+    public boolean hasData(String field, String data) throws InterruptedException, ExecutionException {
+        boolean hasData = true;
+
+        CollectionReference collection = db.collection("task1-users");
+        //asynchronously retrieve all users
+        // Get documetns according to specified id and password
+        ApiFuture<QuerySnapshot> future = collection.whereEqualTo(field, data).get();
+        QuerySnapshot querySnapshot = future.get();
+
+        if(querySnapshot.isEmpty()) {
+            hasData = false;
+        }
+
+        return hasData;
+    }
+
     public boolean hasId(String id) throws InterruptedException, ExecutionException{
         boolean hasId = true;
 

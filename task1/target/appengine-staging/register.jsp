@@ -18,3 +18,4 @@
         <input type="submit" name="Register" value="Register">
     </form>
 </body>
+</html>

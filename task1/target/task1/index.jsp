@@ -57,6 +57,11 @@
         <input type="password" name="Password"><br>
         <input type="submit" value="Login">
     </form>
-    <p><a href="register.html">Register</a></p> 
+
+    <% if(request.getAttribute("error") != null) { %>
+        <p style="color: red;"><%= request.getAttribute("error") %></p>
+    <% } %>
+
+    <p><a href="register.jsp">Register</a></p> 
 </body>
 </html>
