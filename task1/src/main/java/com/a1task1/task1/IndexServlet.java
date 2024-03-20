@@ -13,13 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 public class IndexServlet extends HttpServlet{
     // class to handle backend functionality, code reusability
     Model model;
-    // variable to declare whether db has been initialised
-    boolean initialised = false;
     @Override
     // test method for firestore
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
-        model = new Model(initialised);
-        initialised = true;
+        model = new Model();
 
         //retrieve user info from index.html form 
         String id;
@@ -28,13 +25,16 @@ public class IndexServlet extends HttpServlet{
         id = request.getParameter("ID");
         password = request.getParameter("Password");
 
-        // simple test for user credential validation
+        // user credential validation
         try {
+            // if valid, redirects to forum page
             if(model.validateLogin(id, password)) {
-                response.getWriter().println("valid");
+                response.sendRedirect("/forum.html");
             }
             else{
-                response.getWriter().println("invalid");
+                // maket this display on same login page
+                response.setContentType("text/html");
+                response.getWriter().println("<p>ID or password is invalid<p>");
             }
         } catch (InterruptedException | ExecutionException | IOException e) {
             // TODO Auto-generated catch block
