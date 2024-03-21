@@ -17,5 +17,8 @@
         <input type="image" name="pfp"><br>
         <input type="submit" name="Register" value="Register">
     </form>
+    <% if(request.getAttribute("registerError") != null) { %>
+        <p style="color: red;"><%= request.getAttribute("registerError") %></p>
+    <% } %>
 </body>
 </html>

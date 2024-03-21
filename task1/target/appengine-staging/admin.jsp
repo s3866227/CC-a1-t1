@@ -17,8 +17,11 @@
             <input type="password" name="oldPassword"><br>
             <label for="newPassword">Enter new password:</label>
             <input type="password" name="newPassword"><br>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Change">
         </form>
+        <% if(request.getAttribute("changePwError") != null) { %>
+            <p style="color: red;"><%= request.getAttribute("changePwError") %></p>
+        <% } %>
     </section>
     <section>
         <h3>Edit posted messages</h3>

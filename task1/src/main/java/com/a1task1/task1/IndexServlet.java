@@ -21,7 +21,7 @@ public class IndexServlet extends HttpServlet{
 
         //retrieve user info from index.html form 
         String id;
-        String password;
+        String password;       
 
         id = request.getParameter("ID");
         password = request.getParameter("Password");
@@ -30,11 +30,12 @@ public class IndexServlet extends HttpServlet{
         try {
             // if valid, redirects to forum page
             if(model.validateLogin(id, password)) {
+                getServletContext().setAttribute("uId", id);
                 response.sendRedirect("/forum.jsp");
             }
             else{
                 // displays error message if login credentials are invalid
-                request.setAttribute("error", "ID or password is invalid.");
+                request.setAttribute("loginError", "ID or password is invalid.");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         } catch (InterruptedException | ExecutionException | IOException e) {

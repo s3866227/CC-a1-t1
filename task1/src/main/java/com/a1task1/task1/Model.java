@@ -8,8 +8,10 @@ import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
+import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QuerySnapshot;
+import com.google.cloud.firestore.SetOptions;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
@@ -44,13 +46,14 @@ public class Model {
         ApiFuture<QuerySnapshot> future = collection.whereEqualTo("id", id).whereEqualTo("password", password).get();
         QuerySnapshot querySnapshot = future.get();
 
+        // if user exists, returns true
         if(!querySnapshot.isEmpty()) {
             valid = true;
         }
        return valid;
     }
 
-    // test! reusable method for identifying if data is present in db where field is db field
+    // test! reusable method for identifying if data is present in db where field is db field, returns true if data is present in db
     public boolean hasData(String field, String data) throws InterruptedException, ExecutionException {
         boolean hasData = true;
 
@@ -67,36 +70,36 @@ public class Model {
         return hasData;
     }
 
-    public boolean hasId(String id) throws InterruptedException, ExecutionException{
-        boolean hasId = true;
+    // updates data for a specified field in specified doc
+    public boolean updateData(String docId, String field, String data){
+        boolean set = false;
+
+        DocumentReference docRef = db.collection("task1-users").document(docId);
+        Map<String, Object> update = new HashMap<>();
+        update.put(field, data);
+
+        // updates field while other fields stay the same
+        docRef.set(update, SetOptions.merge());
+
+        set = true;
+        
+        return set;
+    }
+
+    public String docRef(String id) throws InterruptedException, ExecutionException {
+        String docRef = "";
 
         CollectionReference collection = db.collection("task1-users");
         //asynchronously retrieve all users
         // Get documetns according to specified id and password
         ApiFuture<QuerySnapshot> future = collection.whereEqualTo("id", id).get();
-        QuerySnapshot querySnapshot = future.get();
-
-        if(querySnapshot.isEmpty()) {
-            hasId = false;
+        
+        
+        for (DocumentSnapshot document : future.get().getDocuments()) {
+            docRef = document.getId();
         }
 
-        return hasId;
-    }
-
-    public boolean hasUsername(String username) throws InterruptedException, ExecutionException{
-        boolean hasUsername = true;
-
-        CollectionReference collection = db.collection("task1-users");
-        //asynchronously retrieve all users
-        // Get documetns according to specified id and password
-        ApiFuture<QuerySnapshot> future = collection.whereEqualTo("user_name", username).get();
-        QuerySnapshot querySnapshot = future.get();
-
-        if(querySnapshot.isEmpty()) {
-            hasUsername = false;
-        }
-
-        return hasUsername;
+        return docRef;
     }
 
     // add image parameter as well

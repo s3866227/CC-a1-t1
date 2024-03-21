@@ -58,8 +58,12 @@
         <input type="submit" value="Login">
     </form>
 
-    <% if(request.getAttribute("error") != null) { %>
-        <p style="color: red;"><%= request.getAttribute("error") %></p>
+    <% if(request.getAttribute("loginError") != null) { %>
+        <p style="color: red;"><%= request.getAttribute("loginError") %></p>
+    <% } %>
+
+    <% if(request.getAttribute("loginMessage") != null) { %>
+        <p style="color: green;"><%= request.getAttribute("loginMessage") %></p>
     <% } %>
 
     <p><a href="register.jsp">Register</a></p> 

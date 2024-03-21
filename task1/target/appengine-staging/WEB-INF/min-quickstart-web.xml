@@ -48,19 +48,9 @@
       
     <servlet>
             
-        <servlet-name>org.apache.jsp.admin_jsp</servlet-name>
+        <servlet-name>org.apache.jsp.index_jsp</servlet-name>
             
-        <servlet-class origin="WebDescriptor(file:///C:/Users/chloe/OneDrive/Documents/GitHub/CC-a1-t1/task1/target/appengine-staging/WEB-INF/web.xml):0">org.apache.jsp.admin_jsp</servlet-class>
-            
-        <async-supported>false</async-supported>
-          
-    </servlet>
-      
-    <servlet>
-            
-        <servlet-name>org.apache.jsp.forum_jsp</servlet-name>
-            
-        <servlet-class origin="WebDescriptor(file:///C:/Users/chloe/OneDrive/Documents/GitHub/CC-a1-t1/task1/target/appengine-staging/WEB-INF/web.xml):1">org.apache.jsp.forum_jsp</servlet-class>
+        <servlet-class origin="WebDescriptor(file:///C:/Users/chloe/OneDrive/Documents/GitHub/CC-a1-t1/task1/target/appengine-staging/WEB-INF/web.xml):0">org.apache.jsp.index_jsp</servlet-class>
             
         <async-supported>false</async-supported>
           
@@ -70,7 +60,7 @@
             
         <servlet-name>org.apache.jsp.register_jsp</servlet-name>
             
-        <servlet-class origin="WebDescriptor(file:///C:/Users/chloe/OneDrive/Documents/GitHub/CC-a1-t1/task1/target/appengine-staging/WEB-INF/web.xml):2">org.apache.jsp.register_jsp</servlet-class>
+        <servlet-class origin="WebDescriptor(file:///C:/Users/chloe/OneDrive/Documents/GitHub/CC-a1-t1/task1/target/appengine-staging/WEB-INF/web.xml):1">org.apache.jsp.register_jsp</servlet-class>
             
         <async-supported>false</async-supported>
           
@@ -78,9 +68,19 @@
       
     <servlet>
             
-        <servlet-name>org.apache.jsp.index_jsp</servlet-name>
+        <servlet-name>org.apache.jsp.admin_jsp</servlet-name>
             
-        <servlet-class origin="WebDescriptor(file:///C:/Users/chloe/OneDrive/Documents/GitHub/CC-a1-t1/task1/target/appengine-staging/WEB-INF/web.xml):3">org.apache.jsp.index_jsp</servlet-class>
+        <servlet-class origin="WebDescriptor(file:///C:/Users/chloe/OneDrive/Documents/GitHub/CC-a1-t1/task1/target/appengine-staging/WEB-INF/web.xml):2">org.apache.jsp.admin_jsp</servlet-class>
+            
+        <async-supported>false</async-supported>
+          
+    </servlet>
+      
+    <servlet>
+            
+        <servlet-name>org.apache.jsp.forum_jsp</servlet-name>
+            
+        <servlet-class origin="WebDescriptor(file:///C:/Users/chloe/OneDrive/Documents/GitHub/CC-a1-t1/task1/target/appengine-staging/WEB-INF/web.xml):3">org.apache.jsp.forum_jsp</servlet-class>
             
         <async-supported>false</async-supported>
           
@@ -118,21 +118,13 @@
       
     <servlet-mapping origin="WebDescriptor(file:///C:/Users/chloe/OneDrive/Documents/GitHub/CC-a1-t1/task1/target/appengine-staging/WEB-INF/web.xml):10">
             
-        <servlet-name>org.apache.jsp.admin_jsp</servlet-name>
+        <servlet-name>org.apache.jsp.index_jsp</servlet-name>
             
-        <url-pattern>/admin.jsp</url-pattern>
+        <url-pattern>/index.jsp</url-pattern>
           
     </servlet-mapping>
       
     <servlet-mapping origin="WebDescriptor(file:///C:/Users/chloe/OneDrive/Documents/GitHub/CC-a1-t1/task1/target/appengine-staging/WEB-INF/web.xml):11">
-            
-        <servlet-name>org.apache.jsp.forum_jsp</servlet-name>
-            
-        <url-pattern>/forum.jsp</url-pattern>
-          
-    </servlet-mapping>
-      
-    <servlet-mapping origin="WebDescriptor(file:///C:/Users/chloe/OneDrive/Documents/GitHub/CC-a1-t1/task1/target/appengine-staging/WEB-INF/web.xml):12">
             
         <servlet-name>org.apache.jsp.register_jsp</servlet-name>
             
@@ -140,11 +132,19 @@
           
     </servlet-mapping>
       
+    <servlet-mapping origin="WebDescriptor(file:///C:/Users/chloe/OneDrive/Documents/GitHub/CC-a1-t1/task1/target/appengine-staging/WEB-INF/web.xml):12">
+            
+        <servlet-name>org.apache.jsp.admin_jsp</servlet-name>
+            
+        <url-pattern>/admin.jsp</url-pattern>
+          
+    </servlet-mapping>
+      
     <servlet-mapping origin="WebDescriptor(file:///C:/Users/chloe/OneDrive/Documents/GitHub/CC-a1-t1/task1/target/appengine-staging/WEB-INF/web.xml):13">
             
-        <servlet-name>org.apache.jsp.index_jsp</servlet-name>
+        <servlet-name>org.apache.jsp.forum_jsp</servlet-name>
             
-        <url-pattern>/index.jsp</url-pattern>
+        <url-pattern>/forum.jsp</url-pattern>
           
     </servlet-mapping>
       

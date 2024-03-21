@@ -7,8 +7,9 @@
 <body>
     <header><h2>Forum page</h2></header>
     <nav>
+        <% String id = (String) getServletContext().getAttribute("uId"); %>
         <a href="index.jsp">Logout</a>
-        <a href="admin.jsp">Username</a>
+        <a href="admin.jsp"><%= id %></a>
         <!-- display user image-->
     </nav>
     <section name="message-posting">
