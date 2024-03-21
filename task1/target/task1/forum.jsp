@@ -7,14 +7,14 @@
 <body>
     <header><h2>Forum page</h2></header>
     <nav>
-        <% String id = (String) getServletContext().getAttribute("uId"); %>
+        <% String username = (String) getServletContext().getAttribute("user"); %>
         <a href="index.jsp">Logout</a>
-        <a href="admin.jsp"><%= id %></a>
+        <a href="admin.jsp"><%= username %></a>
         <!-- display user image-->
     </nav>
     <section name="message-posting">
         <h3>What are you thinking about..?</h3>
-        <form action="admin" method="post">
+        <form action="message" method="post">
             <label for="subject">Subject:</label>
             <input type="text" name="subject"><br>
             <label for="message">Message:</label>

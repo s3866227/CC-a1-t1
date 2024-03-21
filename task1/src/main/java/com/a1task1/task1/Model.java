@@ -70,6 +70,21 @@ public class Model {
         return hasData;
     }
 
+    public String getData(String field, String id) throws InterruptedException, ExecutionException {
+        String data = "";
+
+        CollectionReference collection = db.collection("task1-users");
+        //asynchronously retrieve all users
+        // Get documetns according to specified id and password
+        ApiFuture<QuerySnapshot> future = collection.whereEqualTo("id", id).get();
+        
+        for (DocumentSnapshot document : future.get().getDocuments()) {
+            data = document.getString(field);
+        }
+
+        return data;
+    }
+
     // updates data for a specified field in specified doc
     public boolean updateData(String docId, String field, String data){
         boolean set = false;

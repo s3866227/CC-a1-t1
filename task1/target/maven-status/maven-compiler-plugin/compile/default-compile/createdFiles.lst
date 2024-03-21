@@ -1,4 +1,5 @@
 com\a1task1\task1\IndexServlet.class
+com\a1task1\task1\MessageServlet.class
 com\a1task1\task1\EditPasswordServlet.class
 com\a1task1\task1\Model.class
 com\a1task1\task1\RegisterServlet.class

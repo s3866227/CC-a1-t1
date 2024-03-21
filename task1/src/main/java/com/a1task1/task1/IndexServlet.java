@@ -20,8 +20,7 @@ public class IndexServlet extends HttpServlet{
         model = new Model();
 
         //retrieve user info from index.html form 
-        String id;
-        String password;       
+        String id, password, username;       
 
         id = request.getParameter("ID");
         password = request.getParameter("Password");
@@ -30,7 +29,8 @@ public class IndexServlet extends HttpServlet{
         try {
             // if valid, redirects to forum page
             if(model.validateLogin(id, password)) {
-                getServletContext().setAttribute("uId", id);
+                username = model.getData("user_name", id);
+                getServletContext().setAttribute("user", username);
                 response.sendRedirect("/forum.jsp");
             }
             else{
