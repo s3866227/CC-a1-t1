@@ -151,7 +151,7 @@ public class Model {
     public QuerySnapshot viewAllPosts() throws InterruptedException, ExecutionException {
         CollectionReference collection = db.collection("user-posts");
         //asynchronously retrieve all users
-        ApiFuture<QuerySnapshot> future = collection.orderBy("date_time", Query.Direction.DESCENDING).get();
+        ApiFuture<QuerySnapshot> future = collection.orderBy("date_time", Query.Direction.DESCENDING).limit(10).get();
         QuerySnapshot querySnapshot = future.get();
         if(!querySnapshot.isEmpty()) {
             return querySnapshot;

@@ -8,7 +8,6 @@
     <header><h2>User Admin Page</h2></header>
     <nav>
         <a href="index.jsp">Logout</a>
-        <a href="forum.jsp">Home</a>
     </nav>
     <section>
         <h3>Edit Password</h3>
@@ -33,6 +32,10 @@
                     </header>
                     <h5><%= post.getString("subject") %></h5>
                     <p><%= post.getString("message") %></p>
+                    <form action="edit-post" method="post">
+                        <input type="hidden" name="docId" value="<%= post.getId() %>">
+                        <input type="submit" value="Edit">
+                    </form>
                 </article><br>
             <% } 
             } %>
