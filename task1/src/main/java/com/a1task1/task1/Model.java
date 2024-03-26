@@ -169,6 +169,16 @@ public class Model {
         }
         return null;
     }
+
+    public String getDocData (String docId, String field) throws InterruptedException, ExecutionException{
+        DocumentReference docRef = db.collection("user-posts").document(docId);
+        ApiFuture<DocumentSnapshot> future = docRef.get();
+        DocumentSnapshot document = future.get();
+
+        String data = (String) document.get(field);
+        
+        return data;
+    }
 }
 
 

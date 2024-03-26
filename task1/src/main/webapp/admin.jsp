@@ -32,7 +32,7 @@
                     </header>
                     <h5><%= post.getString("subject") %></h5>
                     <p><%= post.getString("message") %></p>
-                    <form action="edit-post" method="post">
+                    <form action="selected-post" method="post">
                         <input type="hidden" name="docId" value="<%= post.getId() %>">
                         <input type="submit" value="Edit">
                     </form>

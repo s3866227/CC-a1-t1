@@ -19,6 +19,10 @@ handlers:
   script: unused
   login: optional
   secure: optional
+- url: /selected-post
+  script: unused
+  login: optional
+  secure: optional
 - url: /register
   script: unused
   login: optional
@@ -28,10 +32,6 @@ handlers:
   login: optional
   secure: optional
 - url: /index
-  script: unused
-  login: optional
-  secure: optional
-- url: /edit-post
   script: unused
   login: optional
   secure: optional
