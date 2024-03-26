@@ -35,6 +35,10 @@ handlers:
   script: unused
   login: optional
   secure: optional
+- url: /edit-post
+  script: unused
+  login: optional
+  secure: optional
 - url: /password
   script: unused
   login: optional

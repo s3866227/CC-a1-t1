@@ -103,6 +103,26 @@ public class Model {
         return set;
     }
 
+    public boolean updatePost(String docId, String subject, String message, String author) {
+        boolean set = false;
+
+        DocumentReference docRef = db.collection("user-posts").document(docId);
+
+        Timestamp timestamp = Timestamp.now();
+        // store user entered data in hashmap for data entry
+        Map<String, Object> updatedPost = new HashMap<>();
+        updatedPost.put("author", author);
+        updatedPost.put("subject", subject);
+        updatedPost.put("message", message);
+        updatedPost.put("date_time", timestamp);
+
+        docRef.set(updatedPost);
+
+        set = true;
+
+        return set;
+    }
+
     public String docRef(String id) throws InterruptedException, ExecutionException {
         String docRef = "";
 

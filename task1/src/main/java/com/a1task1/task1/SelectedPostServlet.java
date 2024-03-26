@@ -24,6 +24,7 @@ public class SelectedPostServlet extends HttpServlet{
             request.setAttribute("subject", subject);
             message = model.getDocData(docRef, "message");
             request.setAttribute("message", message);
+            request.setAttribute("docId", docRef);
 
             request.getRequestDispatcher("edit-post.jsp").forward(request, response);
         } catch (InterruptedException | ExecutionException e) {

@@ -12,7 +12,8 @@
             <input type="text" name="subject" value="${subject}"><br>
             <label for="message">Message:</label>
             <input type="text" name="message" value="${message}"><br>
-            <input type="submit" value="Change">
+            <input type="hidden" name="docId" value="${docId}">
+            <input type="submit" value="Update">
         </form>
     </body>
 </html>
