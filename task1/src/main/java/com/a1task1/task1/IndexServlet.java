@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.cloud.firestore.QuerySnapshot;
+
 
 @WebServlet("/index")
 public class IndexServlet extends HttpServlet{
@@ -31,7 +33,16 @@ public class IndexServlet extends HttpServlet{
             if(model.validateLogin(id, password)) {
                 username = model.getData("user_name", id);
                 getServletContext().setAttribute("user", username);
-                response.sendRedirect("/forum.jsp");
+                QuerySnapshot allPosts = model.viewAllPosts();
+               
+
+                if(!allPosts.isEmpty()){
+                    request.setAttribute("posts", allPosts);
+                    request.getRequestDispatcher("forum.jsp").forward(request, response);
+                }
+                else{
+                    response.sendRedirect("/forum.jsp");
+                }
             }
             else{
                 // displays error message if login credentials are invalid

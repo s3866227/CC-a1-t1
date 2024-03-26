@@ -6,10 +6,12 @@ import java.util.concurrent.ExecutionException;
 
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.Timestamp;
 import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.Query;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.SetOptions;
 import com.google.firebase.FirebaseApp;
@@ -130,6 +132,42 @@ public class Model {
         newUser.put("password", password);
 
         docRef.set(newUser);
+    }
+
+    public void addPost(String author, String subject, String message) {
+        DocumentReference docRef = db.collection("user-posts").document();
+
+        Timestamp timestamp = Timestamp.now();
+        // store user entered data in hashmap for data entry
+        Map<String, Object> newPost = new HashMap<>();
+        newPost.put("author", author);
+        newPost.put("subject", subject);
+        newPost.put("message", message);
+        newPost.put("date_time", timestamp);
+
+        docRef.set(newPost);
+    }
+
+    public QuerySnapshot viewAllPosts() throws InterruptedException, ExecutionException {
+        CollectionReference collection = db.collection("user-posts");
+        //asynchronously retrieve all users
+        ApiFuture<QuerySnapshot> future = collection.orderBy("date_time", Query.Direction.DESCENDING).get();
+        QuerySnapshot querySnapshot = future.get();
+        if(!querySnapshot.isEmpty()) {
+            return querySnapshot;
+        }
+        return null;
+    }
+
+    public QuerySnapshot viewUserPosts(String user) throws InterruptedException, ExecutionException {
+        CollectionReference collection = db.collection("user-posts");
+        //asynchronously retrieve all users
+        ApiFuture<QuerySnapshot> future = collection.whereEqualTo("author", user).orderBy("date_time", Query.Direction.DESCENDING).get();
+        QuerySnapshot querySnapshot = future.get();
+        if(!querySnapshot.isEmpty()) {
+            return querySnapshot;
+        }
+        return null;
     }
 }
 

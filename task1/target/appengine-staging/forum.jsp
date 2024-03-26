@@ -9,7 +9,7 @@
     <nav>
         <% String username = (String) getServletContext().getAttribute("user"); %>
         <a href="index.jsp">Logout</a>
-        <a href="admin.jsp"><%= username %></a>
+        <a href="AdminServlet"><%= username %></a>
         <!-- display user image-->
     </nav>
     <section name="message-posting">
@@ -25,7 +25,20 @@
     </section>
     <section name="message-display">
         <h3>What others are thinking about!</h3>
-        <!-- show articles of messages -->
+        <% com.google.cloud.firestore.QuerySnapshot posts = (com.google.cloud.firestore.QuerySnapshot) request.getAttribute("posts");
+            if(posts != null){ for (com.google.cloud.firestore.QueryDocumentSnapshot post : posts.getDocuments()) { %>
+                <article>
+                    <header>
+                        <h4><%= post.getString("author") %></h4>
+                        <p><%= post.getTimestamp("date_time") %></p>
+                    </header>
+                    <h5><%= post.getString("subject") %></h5>
+                    <p><%= post.getString("message") %></p>
+                </article><br>
+            <% } 
+            } %>
+
+           
     </section>
 </body>
 </html>

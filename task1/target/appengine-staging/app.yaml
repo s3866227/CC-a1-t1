@@ -35,3 +35,7 @@ handlers:
   script: unused
   login: optional
   secure: optional
+- url: /AdminServlet
+  script: unused
+  login: optional
+  secure: optional

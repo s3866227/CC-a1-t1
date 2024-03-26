@@ -25,6 +25,17 @@
     </section>
     <section>
         <h3>Edit posted messages</h3>
+        <% com.google.cloud.firestore.QuerySnapshot posts = (com.google.cloud.firestore.QuerySnapshot) request.getAttribute("userPosts");
+            if(posts != null){ for (com.google.cloud.firestore.QueryDocumentSnapshot post : posts.getDocuments()) { %>
+                <article>
+                    <header>
+                        <p><%= post.getTimestamp("date_time") %></p>
+                    </header>
+                    <h5><%= post.getString("subject") %></h5>
+                    <p><%= post.getString("message") %></p>
+                </article><br>
+            <% } 
+            } %>
     </section>
 </body>
 </html>
