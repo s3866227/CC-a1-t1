@@ -1,0 +1,21 @@
+runtime: java17
+inbound_services:
+- warmup
+auto_id_policy: default
+handlers:
+- url: /
+  script: unused
+  login: optional
+  secure: optional
+- url: /.*/
+  script: unused
+  login: optional
+  secure: optional
+- url: /_ah/.*
+  script: unused
+  login: optional
+  secure: optional
+- url: .*\.jsp
+  script: unused
+  login: optional
+  secure: optional
